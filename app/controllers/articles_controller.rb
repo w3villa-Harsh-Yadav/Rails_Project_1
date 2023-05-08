@@ -25,9 +25,11 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        flash[:notice] = "Article was created."
+        format.html { redirect_to article_path(@article), notice: "Article was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
+        # render :new, notice: "Some error occured."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
@@ -61,7 +63,12 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       # debugger #It will pause the server and will show where you are in your code
-      @article = Article.find(params[:id])
+      begin
+        @article = Article.find(params[:id])
+      rescue => exception
+        redirect_to articles_path, notice: exception
+      end
+
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,0 +1,84 @@
+/* Common classes */
+.page-heading{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* navigation bar css */
+.navbar{
+    background-color: whitesmoke !important;
+}
+
+#logo{
+    float: left;
+    font-size: 1.7em;
+    /* color: white; */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Home container css */
+
+#home-container{
+    max-width: 85% !important;
+    padding-top: 40px;
+    height: fit-content;
+}
+#home-container-para{
+    text-align: center;
+    margin: auto;
+    padding: 30px 0px;
+    color: white;
+}
+#home-container-heading{
+    color: white;
+    text-transform: uppercase;
+}
+.jumbotron{
+    background-image: url("https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHdyaXRpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 740px;
+}
+
+/* Adding new article code */
+
+
+/* form code */
+.form-container{
+    max-width: 40%;
+    margin: auto;
+}
+
+/* Articles listing page code */
+#articles{
+    padding: 20px 100px;
+}
+.new-btn{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+}
+
+/* Individual article page code */
+.article-container{
+    width: 50%;
+    margin: auto;
+}
+/* Footer code */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+}
+.footer p{
+    padding-top: 10px;
+}
