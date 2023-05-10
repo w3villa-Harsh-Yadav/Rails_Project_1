@@ -1,0 +1,24 @@
+<%= form_with(model: @user) do |form| %>
+  <%= render "shared/errors", obj: @user %>
+  <div class="form-container">
+
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-control" %>
+
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+
+    <div class="d-flex mt-3">
+      <% if params.require("action") == "new"%>
+        <%= form.submit "Sign Up", class: "btn btn-success" %>
+        <%= link_to "Back to Home", root_path, class: "btn btn-success mx-2" %>
+      <% else%>
+        <%= form.submit class: "btn btn-success" %>
+        <%= link_to "Back to Profile", user_path(@user), class: "btn btn-success mx-2" %>
+      <% end%>
+    </div>
+  </div>
+<% end %>

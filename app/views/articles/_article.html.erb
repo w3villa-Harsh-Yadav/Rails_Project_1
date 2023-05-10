@@ -21,16 +21,6 @@
   </div>
 
   <div class="d-flex mt-3 justify-content-center"">
-    <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-success" %>
-    <%= button_to "Destroy this article",
-    article_path(@article),
-    class: "btn btn-danger mx-2",
-    method: :delete,
-    form: {
-      data: {
-        turbo_confirm: "Are you sure?"
-      }
-    } %>
     <%= link_to "Back to articles", articles_path, class: "btn btn-success" %>
   </div>
 </div>

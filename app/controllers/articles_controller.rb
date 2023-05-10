@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     respond_to do |format|
       if @article.save
         flash[:notice] = "Article was created."
@@ -68,7 +68,6 @@ class ArticlesController < ApplicationController
       rescue => exception
         redirect_to articles_path, notice: exception
       end
-
     end
 
     # Only allow a list of trusted parameters through.

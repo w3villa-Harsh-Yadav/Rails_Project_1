@@ -1,0 +1,49 @@
+<div id="articles">
+  <div class="row row-cols-2">
+    <% obj.each do |article| %>
+      <div class="col">
+        <div class="card mt-4 shadow bg-body rounded">
+          <div class="card-heading card-header text-center">
+            <% if article.user %>
+              By
+              <%= link_to article.user.username, user_path(article.user), class: "link-success" %>
+            <% else %>
+              Anonymous
+            <% end %>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= truncate(article.description, length: 50) %></p>
+            <%= link_to "View Article", article_path(article), class: "btn btn-success" %>
+            <% if logged_in? && current_user == article.user %>
+              <%= link_to "Edit Article", edit_article_path(article), class: "btn btn-success" %>
+            <% end %>
+          </div>
+          <div class="card-footer text-muted text-center">
+            Created
+            <%= time_ago_in_words(article.created_at) %>
+            ago, updated
+            <%= time_ago_in_words(article.updated_at) %>
+            ago
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if logged_in? && !obj.empty? %>
+    <% if current_user == obj.first.user %>
+      <%= link_to "Add a New article",
+      new_article_path,
+      class: "btn btn-success new-btn mt-4" %>
+    <% end %>
+    <% if params.require(:controller) == "articles" %>
+      <%= link_to "Add a New article",
+      new_article_path,
+      class: "btn btn-success new-btn mt-4" %>
+
+    <% end %>
+  <% end %>
+</div>
+<div class="apple_pagination mb-0">
+  <%= will_paginate obj, container: false %>
+</div>

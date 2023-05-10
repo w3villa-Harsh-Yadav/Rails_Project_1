@@ -1,15 +1,29 @@
-<%= form_with(model: article) do |form| %>
-  <%= render "shared/errors" %>
-  <div class="form-container">
+<div class="form-container position-relative">
+  <%= form_with(model: article) do |form| %>
+    <%= render "shared/errors", obj: @article %>
+
     <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control" %>
 
     <%= form.label :description, class: "form-label" %>
     <%= form.text_area :description, class: "form-control" %>
 
-    <div class="d-flex mt-3">
+    <div class="d-inline-flex mt-3">
       <%= form.submit class: "btn btn-success" %>
       <%= link_to "Back to articles", articles_path, class: "btn btn-success mx-2" %>
     </div>
+  <% end %>
+  <% if params.require("action") == "edit" %>
+    <div class="d-flex align-items-end justify-content-end position-absolute end-0 bottom-0">
+    <%= button_to "Destroy this article",
+    article_path(@article),
+    class: "btn btn-danger",
+    method: :delete,
+    form: {
+      data: {
+        turbo_confirm: "Are you sure?"
+      }
+    } %>
   </div>
-<% end %>
+  <% end %>
+</div>

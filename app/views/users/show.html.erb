@@ -1,0 +1,12 @@
+<h1 class="page-heading pt-2"><%= @user.username %> Profile</h1>
+<img src="https://media.istockphoto.com/id/1433039224/photo/blue-user-3d-icon-person-profile-concept-isolated-on-white-background-with-social-member.jpg?b=1&s=170667a&w=0&k=20&c=X-ZNF80_ASKvWpbOICHC8Pf27CFCRyh7Ce9SDVopjZg="  class="rounded mx-auto d-block" height="200" width="200" alt="#">
+
+<h3 class="text-center mt-4">
+    <% if logged_in? && current_user == @user %>
+        <%= link_to 'Edit your profile', edit_user_path(@user), class: 'btn btn-success'%>
+    <% end %>
+</h3>
+
+<h3 class="text-center mt-4">List of all the Articles</h3>
+
+<%= render 'articles/articles', obj: @user.articles.paginate(page: params[:page], per_page: 2) %>

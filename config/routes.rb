@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "pages#home"
   get "about", to: "pages#about"
+  get "signup", to: "users#new"
+  resources :users, except: [:new]
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#login"
+  get "logout", to: "sessions#logout"
 
 end
