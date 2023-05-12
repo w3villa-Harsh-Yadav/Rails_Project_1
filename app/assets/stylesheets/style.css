@@ -78,6 +78,12 @@ body {
   width: 50%;
   margin: auto;
 }
+
+/* +++ User Profile Page +++ */
+.button_to{
+  display: inline !important;
+}
+
 /* Pagination code */
 
 .apple_pagination {
@@ -131,3 +137,4 @@ body {
   padding-top: 10px;
   margin: 0px;
 }
+

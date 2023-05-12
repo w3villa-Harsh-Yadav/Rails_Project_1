@@ -35,12 +35,10 @@
       <%= link_to "Add a New article",
       new_article_path,
       class: "btn btn-success new-btn mt-4" %>
-    <% end %>
-    <% if params.require(:controller) == "articles" %>
+    <% elsif params.require(:controller) == "articles" %>
       <%= link_to "Add a New article",
       new_article_path,
       class: "btn btn-success new-btn mt-4" %>
-
     <% end %>
   <% end %>
 </div>
